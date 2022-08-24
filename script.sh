@@ -13,16 +13,6 @@ fi
 
 docker container rm node_test1 -f
 docker image rm java-docker -f 
-docker build -t java-docker .
-docker run -d --name node_test1 -e $PORT_EXT -p $PORT_EXT:$PORT_INT java-docker
+docker build -t java-docker --build-arg PORT_INT=${PORT_INT} .
+docker run -d --name node_test1  -p $PORT_EXT:$PORT_INT java-docker
 docker container ls
-
-
-
-
-
-
-
-
-
-
